@@ -57,7 +57,7 @@ const ctx = {};
 
 vent.on('foo', foo, ctx);
 vent.on('bar', bar, ctx);
-vent.on('baz', baz, ctx);
+vent.once('baz', baz, ctx);
 
 vent.emit('foo'); // will run listener 'foo'
 vent.off('foo', foo, ctx); // will remove listener 'foo' from the event for context 'ctx'
