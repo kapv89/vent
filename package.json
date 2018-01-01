@@ -1,8 +1,8 @@
 {
   "name": "@krab/vent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An isomorphic event-aggregator",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "babel-node test/main.js",
     "repl": "babel-node",
