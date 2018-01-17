@@ -64,27 +64,27 @@ function run() {
     vent.on('two', listenerTwo, ctx);
     vent.on('three', listenerThree, ctx);
 
-    vent.emit('one', 1, 2);
+    vent.emit(ctx, 'one', 1, 2);
     assert.ok(listenerOne.runs.length === 1);
     assert.ok(listenerOne.runs[0].length === 2);
 
-    vent.emit('two', 1, 2);
+    vent.emit(ctx, 'two', 1, 2);
     assert.ok(listenerTwo.runs.length === 1);
     assert.ok(listenerTwo.runs[0].length === 2);
 
-    vent.emit('three', 1, 2);
+    vent.emit(ctx, 'three', 1, 2);
     assert.ok(listenerThree.runs.length === 1);
     assert.ok(listenerThree.runs[0].length === 2);
 
     vent.off(ctx);
 
-    vent.emit('one');
+    vent.emit(ctx, 'one');
     assert.ok(listenerOne.runs.length === 1);
 
-    vent.emit('two');
+    vent.emit(ctx, 'two');
     assert.ok(listenerOne.runs.length === 1);
 
-    vent.emit('three');
+    vent.emit(ctx, 'three');
     assert.ok(listenerOne.runs.length === 1);
   })();
 }

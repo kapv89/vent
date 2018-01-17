@@ -1,6 +1,6 @@
 ### vent
 
-### v1.0.1
+### v2.0.0
 
 #### We follow [breaking].[feature].[fix] versioning
 
@@ -59,7 +59,9 @@ vent.on('foo', foo, ctx);
 vent.on('bar', bar, ctx);
 vent.once('baz', baz, ctx);
 
-vent.emit('foo'); // will run listener 'foo'
+vent.emit(ctx, 'foo'); // will run listener 'foo'
+vent.emit('bar'); // will NOT run listener 'bar'
+
 vent.off('foo', foo, ctx); // will remove listener 'foo' from the event for context 'ctx'
 vent.off('foo', ctx); // will remove all listeners for event 'foo' for context 'ctx'
 

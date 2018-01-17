@@ -1,4 +1,4 @@
-import {isString, isFunction, isArray} from 'lodash';
+import {isString, isFunction, isArray, isUndefined} from 'lodash';
 
 export default class Vent {
   // a nested map to track things from context to listener
@@ -94,9 +94,15 @@ export default class Vent {
     }
   }
 
-  emit(ev, ...args) {
+  emit(ctx, ev, ...args) {
+    if (isString(ctx)) {
+      [ctx, ev, args] = [this.defaultContext, ctx, isUndefined(ev) ? [] : [ev, ...args]];
+    }
+
     this.getListenerContextTuplesForEvent(ev).forEach(([listener, context]) => {
-      listener.bind(context)(...args);
+      if (context === ctx) {
+        listener.bind(context)(...args);
+      }
     });
     return this;
   }
